@@ -1,0 +1,196 @@
+{
+    "debug_info": {
+        "id-info": "13008"
+    },
+    "res_message": "OK",
+    "active": "active",
+    "domain": "www.yahoo.com",
+    "performance_configuration": {
+        "disable_client_side_caching": false,
+        "minify_static_html": true,
+        "advanced_caching_rules": {
+            "never_cache_resources": [],
+            "always_cache_resources": []
+        },
+        "use_shortest_caching": false,
+        "minify_css": true,
+        "cache300x": false,
+        "comply_vary": false,
+        "compress_jpeg": true,
+        "async_validation": true,
+        "acceleration_level": "advanced",
+        "progressive_image_rendering": false,
+        "prefer_last_modified": false,
+        "minify_javascript": true,
+        "on_the_fly_compression": true,
+        "compress_jepg": true,
+        "comply_no_cache": false,
+        "compress_png": true,
+        "aggressive_compression": false,
+        "cache_headers": [],
+        "perfer_last_modified": false,
+        "tcp_pre_pooling": true
+    },
+    "site_id": 33780784,
+    "extended_ddos": 1000000,
+    "ips": [
+        "35.189.51.141"
+    ],
+    "siteDualFactorSettings": {
+        "shouldSendLoginNotifications": true,
+        "customAreas": [],
+        "version": 0,
+        "enabled": false,
+        "shouldSuggestApplicatons": true,
+        "allowAllUsers": true,
+        "allowedMedia": [
+            "sms",
+            "ga"
+        ],
+        "customAreasExceptions": []
+    },
+    "res": 0,
+    "warnings": [],
+    "use_wildcard_san_instead_of_full_domain_san": true,
+    "add_naked_domain_san": true,
+    "additionalErrors": [],
+    "support_all_tls_versions": false,
+    "account_id": 1284650,
+    "status": "pending-dns-changes",
+    "sealLocation": {
+        "id": "api.seal_location.none",
+        "name": "No seal "
+    },
+    "login_protect": {
+        "allow_all_users": true,
+        "specific_users_list": [],
+        "url_patterns": [],
+        "enabled": false,
+        "urls": [],
+        "send_lp_notifications": true,
+        "authentication_methods": [
+            "sms",
+            "ga"
+        ]
+    },
+    "original_dns": [
+        {
+            "set_data_to": [
+                "72.30.35.10",
+                "72.30.35.9",
+                "98.137.246.7",
+                "98.137.246.8",
+                "98.138.219.231",
+                "98.138.219.232"
+            ],
+            "dns_record_name": "yahoo.com",
+            "set_type_to": "A"
+        },
+        {
+            "set_data_to": [
+                "atsv2-fp-shed.wg1.b.yahoo.com"
+            ],
+            "dns_record_name": "www.yahoo.com",
+            "set_type_to": "CNAME"
+        }
+    ],
+    "acceleration_level": "advanced",
+    "site_creation_date": 1555033207000,
+    "display_name": "www.yahoo.com",
+    "policies": {
+        "delivery_rules": {},
+        "rate_rules": {},
+        "incap_rules": {
+            "All": [
+                {
+                    "filter": " ClientIP != 1.1.1.1/32",
+                    "id": "177753",
+                    "name": "CAPTCHA",
+                    "enabled": "true",
+                    "action": "RULE_ACTION_CAPTCHA"
+                }
+            ]
+        }
+    },
+    "ssl": {
+        "origin_server": {
+            "detected": true,
+            "detectionStatus": "ok"
+        },
+        "generated_certificate": {
+            "san": []
+        }
+    },
+    "dns": [
+        {
+            "set_data_to": [
+                "agh35w6.x.incapdns.net"
+            ],
+            "dns_record_name": "www.yahoo.com",
+            "set_type_to": "CNAME"
+        },
+        {
+            "set_data_to": [
+                "45.60.122.46",
+                "45.60.132.46"
+            ],
+            "dns_record_name": "yahoo.com",
+            "set_type_to": "A"
+        }
+    ],
+    "security": {
+        "waf": {
+            "rules": [
+                {
+                    "id": "api.threats.sql_injection",
+                    "action_text": "Block Request",
+                    "name": "SQL Injection",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "id": "api.threats.cross_site_scripting",
+                    "action_text": "Alert Only",
+                    "name": "Cross Site Scripting",
+                    "action": "api.threats.action.alert"
+                },
+                {
+                    "id": "api.threats.illegal_resource_access",
+                    "action_text": "Block Request",
+                    "name": "Illegal Resource Access",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "id": "api.threats.bot_access_control",
+                    "block_bad_bots": true,
+                    "challenge_suspected_bots": false,
+                    "name": "Bot Access Control"
+                },
+                {
+                    "activation_mode_text": "Auto",
+                    "ddos_traffic_threshold": 1000,
+                    "name": "DDoS",
+                    "id": "api.threats.ddos",
+                    "activation_mode": "api.threats.ddos.activation_mode.auto"
+                },
+                {
+                    "id": "api.threats.backdoor",
+                    "action_text": "Auto-Quarantine",
+                    "name": "Backdoor Protect",
+                    "action": "api.threats.action.quarantine_url"
+                },
+                {
+                    "id": "api.threats.remote_file_inclusion",
+                    "action_text": "Block Request",
+                    "name": "Remote File Inclusion",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "id": "api.threats.customRule",
+                    "action_text": "Ignore",
+                    "name": "IncapRules",
+                    "action": "api.threats.action.disabled"
+                }
+            ]
+        }
+    }
+}

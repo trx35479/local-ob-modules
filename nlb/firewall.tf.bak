@@ -1,0 +1,88 @@
+resource "google_compute_firewall" "cs-outbound-deny" {
+  provider = "google-beta"
+
+  name    = "${var.host_project_id}-cs-outbound-deny"
+  project = "${var.host_project_id}"
+  network = "${var.shared_vpc_name}"
+
+  direction = "EGRESS"
+
+  deny {
+    protocol = "all"
+  }
+
+  destination_ranges = [
+    "10.160.0.0/16", # Production PSA ranges
+    "10.148.0.0/16",
+  ] # Production GCP IP ranges
+
+  enable_logging = "true"
+  priority       = "2000"
+}
+
+# Allow traffic from legacy health check to Palo's in untrusted network
+resource "google_compute_firewall" "untrust-allow-network-lb-health-checks" {
+  provider = "google-beta"
+
+  name = "fw-untrust-allow-network-lb-health-checks"
+
+  project = "${var.host_project_id}"
+  network = "${var.untrust_network_name}"
+
+  enable_logging = true
+
+  allow {
+    protocol = "tcp"
+    ports    = ["1025"] # Open Banking Palo allocation
+  }
+
+  target_tags = ["gcp-palo-firewall"]
+
+  source_ranges = [
+    # "Ingress firewall rule for Network Load Balancing, which requires a legacy health check"
+    # https://cloud.google.com/load-balancing/docs/health-checks#fw-netlb
+    "35.191.0.0/16",
+
+    "209.85.152.0/22",
+    "209.85.204.0/22",
+  ]
+}
+
+# Allow traffic from WAF to Palo's in untrusted network
+resource "google_compute_firewall" "untrust-allow-ob-waf-to-palo" {
+  provider = "google-beta"
+
+  name    = "fw-untrust-allow-ob-waf-to-palo"
+  project = "${var.host_project_id}"
+  network = "${var.untrust_network_name}"
+
+  enable_logging = true
+
+  allow {
+    protocol = "tcp"
+    ports    = ["1025"] # Open Banking Palo allocation
+  }
+
+  target_tags = ["gcp-palo-firewall"]
+
+  source_ranges = [
+    # WAF IPs
+    # https://docs.imperva.com/bundle/cloud-application-security/page/onboarding/setup-checklist.htm#Customer
+    # https://support.incapsula.com/hc/en-us/articles/200627570-Restricting-direct-access-to-your-website-Incapsula-s-IP-addresses-
+    "199.83.128.0/21",
+
+    "198.143.32.0/19",
+    "149.126.72.0/21",
+    "103.28.248.0/22",
+    "45.64.64.0/22",
+    "185.11.124.0/22",
+    "192.230.64.0/18",
+    "107.154.0.0/16",
+    "45.60.0.0/16",
+
+    # ANZ WAF bypass testing. Remove when complete
+    "10.186.0.0/15",   # ANZ 833 workstations and WiFi
+
+    "10.97.0.0/16",    # ANZ Bangalore TechOffices
+  ]
+}

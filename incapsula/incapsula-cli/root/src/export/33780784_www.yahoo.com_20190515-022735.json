@@ -1,0 +1,196 @@
+{
+    "use_wildcard_san_instead_of_full_domain_san": true,
+    "security": {
+        "waf": {
+            "rules": [
+                {
+                    "action_text": "Block Request",
+                    "name": "SQL Injection",
+                    "id": "api.threats.sql_injection",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "action_text": "Alert Only",
+                    "name": "Cross Site Scripting",
+                    "id": "api.threats.cross_site_scripting",
+                    "action": "api.threats.action.alert"
+                },
+                {
+                    "action_text": "Block Request",
+                    "name": "Illegal Resource Access",
+                    "id": "api.threats.illegal_resource_access",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "block_bad_bots": true,
+                    "id": "api.threats.bot_access_control",
+                    "challenge_suspected_bots": false,
+                    "name": "Bot Access Control"
+                },
+                {
+                    "activation_mode": "api.threats.ddos.activation_mode.auto",
+                    "activation_mode_text": "Auto",
+                    "id": "api.threats.ddos",
+                    "ddos_traffic_threshold": 1000,
+                    "name": "DDoS"
+                },
+                {
+                    "action_text": "Auto-Quarantine",
+                    "name": "Backdoor Protect",
+                    "id": "api.threats.backdoor",
+                    "action": "api.threats.action.quarantine_url"
+                },
+                {
+                    "action_text": "Block Request",
+                    "name": "Remote File Inclusion",
+                    "id": "api.threats.remote_file_inclusion",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "action_text": "Ignore",
+                    "name": "IncapRules",
+                    "id": "api.threats.customRule",
+                    "action": "api.threats.action.disabled"
+                }
+            ]
+        }
+    },
+    "warnings": [],
+    "add_naked_domain_san": true,
+    "policies": {
+        "delivery_rules": {},
+        "incap_rules": {
+            "All": [
+                {
+                    "filter": " ClientIP != 1.1.1.1/32",
+                    "enabled": "true",
+                    "action": "RULE_ACTION_CAPTCHA",
+                    "id": "177753",
+                    "name": "CAPTCHA"
+                }
+            ]
+        },
+        "rate_rules": {}
+    },
+    "res": 0,
+    "active": "active",
+    "display_name": "www.yahoo.com",
+    "debug_info": {
+        "id-info": "13008"
+    },
+    "site_id": 33780784,
+    "dns": [
+        {
+            "dns_record_name": "www.yahoo.com",
+            "set_data_to": [
+                "agh35w6.x.incapdns.net"
+            ],
+            "set_type_to": "CNAME"
+        },
+        {
+            "dns_record_name": "yahoo.com",
+            "set_data_to": [
+                "45.60.122.46",
+                "45.60.132.46"
+            ],
+            "set_type_to": "A"
+        }
+    ],
+    "ssl": {
+        "origin_server": {
+            "detected": true,
+            "detectionStatus": "ok"
+        },
+        "generated_certificate": {
+            "san": []
+        }
+    },
+    "login_protect": {
+        "specific_users_list": [],
+        "send_lp_notifications": true,
+        "urls": [],
+        "url_patterns": [],
+        "authentication_methods": [
+            "sms",
+            "ga"
+        ],
+        "allow_all_users": true,
+        "enabled": false
+    },
+    "additionalErrors": [],
+    "support_all_tls_versions": false,
+    "sealLocation": {
+        "id": "api.seal_location.none",
+        "name": "No seal "
+    },
+    "site_creation_date": 1555033207000,
+    "domain": "www.yahoo.com",
+    "original_dns": [
+        {
+            "dns_record_name": "yahoo.com",
+            "set_data_to": [
+                "72.30.35.10",
+                "72.30.35.9",
+                "98.137.246.7",
+                "98.137.246.8",
+                "98.138.219.231",
+                "98.138.219.232"
+            ],
+            "set_type_to": "A"
+        },
+        {
+            "dns_record_name": "www.yahoo.com",
+            "set_data_to": [
+                "atsv2-fp-shed.wg1.b.yahoo.com"
+            ],
+            "set_type_to": "CNAME"
+        }
+    ],
+    "extended_ddos": 1000000,
+    "status": "pending-dns-changes",
+    "ips": [
+        "35.189.51.141"
+    ],
+    "performance_configuration": {
+        "minify_static_html": true,
+        "minify_javascript": true,
+        "prefer_last_modified": false,
+        "advanced_caching_rules": {
+            "always_cache_resources": [],
+            "never_cache_resources": []
+        },
+        "cache_headers": [],
+        "use_shortest_caching": false,
+        "minify_css": true,
+        "tcp_pre_pooling": true,
+        "comply_no_cache": false,
+        "progressive_image_rendering": false,
+        "acceleration_level": "advanced",
+        "aggressive_compression": false,
+        "compress_jpeg": true,
+        "comply_vary": false,
+        "disable_client_side_caching": false,
+        "on_the_fly_compression": true,
+        "perfer_last_modified": false,
+        "compress_jepg": true,
+        "cache300x": false,
+        "compress_png": true,
+        "async_validation": true
+    },
+    "res_message": "OK",
+    "acceleration_level": "advanced",
+    "account_id": 1284650,
+    "siteDualFactorSettings": {
+        "allowedMedia": [
+            "sms",
+            "ga"
+        ],
+        "shouldSendLoginNotifications": true,
+        "version": 0,
+        "enabled": false,
+        "allowAllUsers": true,
+        "customAreasExceptions": [],
+        "customAreas": [],
+        "shouldSuggestApplicatons": true
+    }
+}

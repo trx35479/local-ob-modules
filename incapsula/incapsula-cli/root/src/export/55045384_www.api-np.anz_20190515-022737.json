@@ -1,0 +1,227 @@
+{
+    "use_wildcard_san_instead_of_full_domain_san": true,
+    "security": {
+        "waf": {
+            "rules": [
+                {
+                    "action_text": "Block Request",
+                    "name": "SQL Injection",
+                    "id": "api.threats.sql_injection",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "action_text": "Alert Only",
+                    "name": "Cross Site Scripting",
+                    "id": "api.threats.cross_site_scripting",
+                    "action": "api.threats.action.alert"
+                },
+                {
+                    "action_text": "Block Request",
+                    "name": "Illegal Resource Access",
+                    "id": "api.threats.illegal_resource_access",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "block_bad_bots": true,
+                    "id": "api.threats.bot_access_control",
+                    "challenge_suspected_bots": false,
+                    "name": "Bot Access Control"
+                },
+                {
+                    "activation_mode": "api.threats.ddos.activation_mode.auto",
+                    "activation_mode_text": "Auto",
+                    "id": "api.threats.ddos",
+                    "ddos_traffic_threshold": 1000,
+                    "name": "DDoS"
+                },
+                {
+                    "action_text": "Auto-Quarantine",
+                    "name": "Backdoor Protect",
+                    "id": "api.threats.backdoor",
+                    "action": "api.threats.action.quarantine_url"
+                },
+                {
+                    "action_text": "Block Request",
+                    "name": "Remote File Inclusion",
+                    "id": "api.threats.remote_file_inclusion",
+                    "action": "api.threats.action.block_request"
+                },
+                {
+                    "action_text": "Ignore",
+                    "name": "IncapRules",
+                    "id": "api.threats.customRule",
+                    "action": "api.threats.action.disabled"
+                }
+            ]
+        },
+        "acls": {
+            "rules": [
+                {
+                    "id": "api.acl.whitelisted_ips",
+                    "ips": [
+                        "1.136.0.0/16",
+                        "203.110.235.134/32"
+                    ],
+                    "name": "Visitors from whitelisted IPs"
+                },
+                {
+                    "id": "api.acl.blacklisted_ips",
+                    "ips": [
+                        "0.0.0.0-255.255.255.255"
+                    ],
+                    "name": "Visitors from blacklisted IPs"
+                }
+            ]
+        }
+    },
+    "warnings": [],
+    "add_naked_domain_san": true,
+    "policies": {
+        "delivery_rules": {
+            "Rewrite": [
+                {
+                    "filter": "",
+                    "add_missing": "false",
+                    "allow_caching": "false",
+                    "action": "RULE_ACTION_REWRITE_HEADER",
+                    "enabled": "true",
+                    "id": "188520",
+                    "name": "change_host_header",
+                    "from": "api-np.anz",
+                    "last_7_days_requests_count": "62",
+                    "to": "helloworld.sec.gcpnp.anz",
+                    "priority": "1",
+                    "rewrite_name": "Host"
+                }
+            ]
+        },
+        "incap_rules": {},
+        "rate_rules": {}
+    },
+    "res": 0,
+    "active": "active",
+    "display_name": "www.api-np.anz",
+    "debug_info": {
+        "id-info": "13008"
+    },
+    "site_id": 55045384,
+    "dns": [
+        {
+            "dns_record_name": "www.api-np.anz",
+            "set_data_to": [
+                "ck5ue6m.x.incapdns.net"
+            ],
+            "set_type_to": "CNAME"
+        },
+        {
+            "dns_record_name": "api-np.anz",
+            "set_data_to": [
+                "45.60.124.46",
+                "45.60.126.46"
+            ],
+            "set_type_to": "A"
+        }
+    ],
+    "ssl": {
+        "origin_server": {
+            "detected": true,
+            "detectionStatus": "ok"
+        },
+        "generated_certificate": {
+            "validation_method": "email",
+            "san": [
+                "*.api-np.anz",
+                "api-np.anz"
+            ],
+            "validation_data": "DNManage@anz.com",
+            "ca": "GS",
+            "validation_status": "done"
+        }
+    },
+    "login_protect": {
+        "specific_users_list": [],
+        "send_lp_notifications": true,
+        "urls": [],
+        "url_patterns": [],
+        "authentication_methods": [
+            "ga",
+            "sms"
+        ],
+        "allow_all_users": true,
+        "enabled": false
+    },
+    "log_level": "full",
+    "additionalErrors": [],
+    "support_all_tls_versions": false,
+    "sealLocation": {
+        "id": "api.seal_location.none",
+        "name": "No seal "
+    },
+    "site_creation_date": 1556674680000,
+    "domain": "www.api-np.anz",
+    "original_dns": [
+        {
+            "dns_record_name": "api-np.anz",
+            "set_data_to": [
+                "165.160.13.20",
+                "165.160.15.20"
+            ],
+            "set_type_to": "A"
+        },
+        {
+            "dns_record_name": "www.api-np.anz",
+            "set_data_to": [
+                "165.160.13.20",
+                "165.160.15.20"
+            ],
+            "set_type_to": "A"
+        }
+    ],
+    "extended_ddos": 1000000,
+    "status": "pending-dns-changes",
+    "ips": [
+        "35.244.110.71"
+    ],
+    "performance_configuration": {
+        "minify_static_html": true,
+        "minify_javascript": true,
+        "prefer_last_modified": false,
+        "advanced_caching_rules": {
+            "always_cache_resources": [],
+            "never_cache_resources": []
+        },
+        "cache_headers": [],
+        "use_shortest_caching": false,
+        "minify_css": true,
+        "tcp_pre_pooling": true,
+        "comply_no_cache": false,
+        "progressive_image_rendering": false,
+        "acceleration_level": "advanced",
+        "aggressive_compression": false,
+        "compress_jpeg": true,
+        "comply_vary": false,
+        "disable_client_side_caching": false,
+        "on_the_fly_compression": true,
+        "perfer_last_modified": false,
+        "compress_jepg": true,
+        "cache300x": false,
+        "compress_png": true,
+        "async_validation": true
+    },
+    "acceleration_level": "advanced",
+    "account_id": 1284650,
+    "siteDualFactorSettings": {
+        "allowedMedia": [
+            "ga",
+            "sms"
+        ],
+        "shouldSendLoginNotifications": true,
+        "version": 0,
+        "enabled": false,
+        "allowAllUsers": true,
+        "customAreasExceptions": [],
+        "customAreas": [],
+        "shouldSuggestApplicatons": true
+    },
+    "res_message": "OK"
+}

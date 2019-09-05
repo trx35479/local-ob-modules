@@ -1,0 +1,10 @@
+.terraform*
+credentials.json
+terraform.tfvars
+terraform.tfstate*
+tls/*
+.idea
+
+*.backend
+*.tfvars
+
